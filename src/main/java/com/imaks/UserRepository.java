@@ -1,14 +1,15 @@
 package com.imaks;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 public class UserRepository {
-    static List<User> users = new ArrayList<>();
+    List<User> users;
 
-    public static Optional<User> findUserById(int id){
+    public UserRepository() {
+        this.users = new ArrayList<>();
+    }
+
+    public Optional<User> findUserById(int id){
         User userById = users.stream()
                 .filter(user -> user.getId() == id)
                 .findAny()
@@ -18,7 +19,7 @@ public class UserRepository {
                 });
         return Optional.ofNullable(userById);
     }
-    public static Optional<User> findUserByEmail(String email){
+    public Optional<User> findUserByEmail(String email){
         User userByEmail = users.stream()
                 .filter(user -> user.getEmail().equals(email))
                 .findAny()
@@ -28,7 +29,7 @@ public class UserRepository {
                 });
         return Optional.ofNullable(userByEmail);
     }
-    public static Optional<List<User>> findAllUsers(){
+    public Optional<List<User>> findAllUsers(){
         return Optional.ofNullable(users);
     }
 }

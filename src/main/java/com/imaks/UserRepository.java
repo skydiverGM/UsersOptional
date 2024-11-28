@@ -6,7 +6,13 @@ public class UserRepository {
     List<User> users;
 
     public UserRepository() {
-        this.users = new ArrayList<>();
+        this.users = new ArrayList<>(Arrays.asList(
+                new User(11421, "John", "john@gmail.com"),
+                new User(11422, "Alex", "alex@gmail.com"),
+                new User(11423, "Jalil", "jalil@gmail.com"),
+                new User(11424, "Dijkstra", "dijkstra@gmail.com"),
+                new User(11425, "Viet", "viet@gmail.com")
+        ));
     }
 
     public Optional<User> findUserById(int id){
